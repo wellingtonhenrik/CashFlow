@@ -8,11 +8,14 @@
 
     <ItemGroup>
       <ProjectReference Include="..\CashFlow.Communication\CashFlow.Communication.csproj" />
+      <ProjectReference Include="..\CashFlow.Domain\CashFlow.Domain.csproj" />
       <ProjectReference Include="..\CashFlow.Exception\CashFlow.Exception.csproj" />
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="14.0.0" />
       <PackageReference Include="FluentValidation" Version="11.11.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
     </ItemGroup>
 
 </Project>

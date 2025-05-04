@@ -26,4 +26,7 @@
     <data name="VALOR_MENOS_ZERO" xml:space="preserve">
         <value>Amount must be greater than 0</value>
     </data>
+    <data name="DESPESA_NAO_ENCONTRADA" xml:space="preserve">
+        <value>Expense not found</value>
+    </data>
 </root>

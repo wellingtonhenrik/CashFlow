@@ -14,7 +14,7 @@ public class CultureMidlleware
     public async Task Invoke(HttpContext context)
     {
         var supportedLanguage = CultureInfo.GetCultures(CultureTypes.AllCultures).ToList();
-        var requestCulture = context.Request.Headers.AcceptLanguage.First();
+        var requestCulture = context.Request.Headers.AcceptLanguage.FirstOrDefault();
 
         var cultureInfo = new CultureInfo("pt-BR");
 

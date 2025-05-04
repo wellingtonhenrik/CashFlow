@@ -33,4 +33,7 @@
     <data name="TITULO_OBRIGATORIO" xml:space="preserve">
         <value>O titulo é obrigatório</value>
     </data>
+    <data name="DESPESA_NAO_ENCONTRADA" xml:space="preserve">
+        <value>Despesa não encontrada</value>
+    </data>
 </root>
