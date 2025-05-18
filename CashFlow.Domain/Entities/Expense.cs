@@ -11,3 +11,18 @@ public class Expense
     public decimal Amount { get; set; }
     public PaymentType PaymentType { get; set; }
 }
+
+public static class PaymentTypeExtension
+{
+    public static string ConvertPaymentType(this PaymentType paymentType)
+    {
+        return paymentType switch
+        {
+            PaymentType.CreditCard => "Credit Card",
+            PaymentType.DebitCard => "Debit Card",
+            PaymentType.Cash => "Cash",
+            PaymentType.EletronicTransfer => "Eletronic Transfer",
+            _ => string.Empty
+        };
+    }
+}

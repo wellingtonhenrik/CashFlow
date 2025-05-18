@@ -14,8 +14,29 @@
 
     <ItemGroup>
       <PackageReference Include="AutoMapper" Version="14.0.0" />
+      <PackageReference Include="ClosedXML" Version="0.105.0-rc" />
       <PackageReference Include="FluentValidation" Version="11.11.0" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+      <PackageReference Include="PDFsharp-MigraDoc" Version="6.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="UseCases\Expenses\Reports\Pdf\Fonts\Raleway-Black.ttf" />
+      <EmbeddedResource Include="UseCases\Expenses\Reports\Pdf\Fonts\Raleway-Black.ttf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="UseCases\Expenses\Reports\Pdf\Fonts\Raleway-Regular.ttf" />
+      <EmbeddedResource Include="UseCases\Expenses\Reports\Pdf\Fonts\Raleway-Regular.ttf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="UseCases\Expenses\Reports\Pdf\Fonts\WorkSans-Black.ttf" />
+      <EmbeddedResource Include="UseCases\Expenses\Reports\Pdf\Fonts\WorkSans-Black.ttf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="UseCases\Expenses\Reports\Pdf\Fonts\WorkSans-Regular.ttf" />
+      <EmbeddedResource Include="UseCases\Expenses\Reports\Pdf\Fonts\WorkSans-Regular.ttf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
     </ItemGroup>
 
 </Project>
