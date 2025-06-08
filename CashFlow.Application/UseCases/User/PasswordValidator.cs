@@ -4,7 +4,7 @@ using FluentValidation.Validators;
 
 namespace CashFlow.Application.UseCases.User;
 
-public class PasswordValidator<T> : PropertyValidator<T, string>
+public partial class PasswordValidator<T> : PropertyValidator<T, string>
 {
     private const string ErrorMessage = "ErrorMessage";
 
@@ -27,26 +27,26 @@ public class PasswordValidator<T> : PropertyValidator<T, string>
             return false;
         }
 
-        if (Regex.IsMatch(password, @"[A-Z]+") == false)
+        if (!UpperCaseLetter().IsMatch(password))
         {
             context.MessageFormatter.AppendArgument(ErrorMessage, "informa uma senha valida");
             return false;
         }
 
-        if (Regex.IsMatch(password, @"[a-z]+") == false)
+        if (!LowerCaseLetter().IsMatch(password))
         {
             context.MessageFormatter.AppendArgument(ErrorMessage, "informa uma senha valida");
             return false;
         }
 
 
-        if (Regex.IsMatch(password, @"[1-9]+") == false)
+        if (!Numbers().IsMatch(password))
         {
             context.MessageFormatter.AppendArgument(ErrorMessage, "informa uma senha valida");
             return false;
         }
 
-        if (Regex.IsMatch(password, @"[\!\?\*\.]+") == false)
+        if (!SpecialSymbols().IsMatch(password))
         {
             context.MessageFormatter.AppendArgument(ErrorMessage, "informa uma senha valida");
             return false;
@@ -55,5 +55,18 @@ public class PasswordValidator<T> : PropertyValidator<T, string>
         return true;
     }
 
+    [GeneratedRegex(@"[A-Z]+")]
+    private static partial Regex UpperCaseLetter();
+    
+    [GeneratedRegex(@"[a-z]+")]
+    private static partial Regex LowerCaseLetter();
+
+    [GeneratedRegex(@"[1-9]+")]
+    private static partial Regex Numbers();
+    
+    [GeneratedRegex(@"[\!\?\*\.]+")]
+    private static partial Regex SpecialSymbols();
+
+    
     public override string Name { get; } = "PasswordValidator";
 }
