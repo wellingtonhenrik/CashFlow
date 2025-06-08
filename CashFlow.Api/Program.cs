@@ -45,6 +45,7 @@ builder.Services.AddSwaggerGen(config =>
     });
 });
 builder.Services.AddControllers();
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddMvc(options => { options.Filters.Add(typeof(ExceptionFilter)); });
 

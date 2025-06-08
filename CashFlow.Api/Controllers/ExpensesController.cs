@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using CashFlow.Application.UseCases.Expenses.Delete;
 using CashFlow.Application.UseCases.Expenses.GetAll;
 using CashFlow.Application.UseCases.Expenses.GetById;
@@ -24,7 +25,8 @@ public class ExpensesController : ControllerBase
     public async Task<IActionResult> Register([FromServices] IRegisterExpenseUseCase useCase,
         [FromBody] RequestExpenseJson request)
     {
-        var response = await useCase.ExecuteAsync(request);
+        var emailUser = User.FindFirst(ClaimTypes.Email)?.Value;
+        var response = await useCase.ExecuteAsync(request, emailUser!);
         return Created(string.Empty, response);
     }
 
