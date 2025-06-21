@@ -51,6 +51,7 @@ builder.Services.AddMvc(options => { options.Filters.Add(typeof(ExceptionFilter)
 
 var singningKey = builder.Configuration.GetValue<string>("Settings:Jwt:SigningKey");
 
+
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
 builder.Services.AddAuthentication(config =>
@@ -67,7 +68,15 @@ builder.Services.AddAuthentication(config =>
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(singningKey!))
     };
 });
+
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.Configure(builder.Configuration.GetSection("Kestrel"));
+});
+
 var app = builder.Build();
+
+
 app.UseMiddleware<CultureMidlleware>();
 
 app.UseSwagger();
